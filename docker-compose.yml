@@ -10,6 +10,7 @@ services:
         ports:
             - "7447:7447"
             - "8000:8000"
+            - "2777:2777"
         expose:
             - 7447
             - 8000
@@ -25,3 +26,4 @@ services:
             PARAM_ANYONE_CAN_ISSUE: anyone-can-issue|true
             PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
+            EXPLORER_PORT: 2777

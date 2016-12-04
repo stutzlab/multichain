@@ -32,7 +32,7 @@ fi
 
 # Create the chain if it is not there yet
 if [ ! -d /root/.multichain/$CHAINNAME ]; then
-    multichain-util create $CHAINNAME 10005
+    multichain-util create $CHAINNAME
 
     # Set some required parameters in the params.dat
     sed -i "s/^default-network-port.*/default-network-port = $NETWORK_PORT/" /root/.multichain/$CHAINNAME/params.dat
@@ -66,4 +66,15 @@ EOF
 
 cp /root/.multichain/$CHAINNAME/multichain.conf /root/.multichain/multichain.conf
 
-multichaind -txindex -shrinkdebugfilesize -printtoconsole $CHAINNAME
+multichaind $CHAINNAME -txindex -shrinkdebugfilesize -printtoconsole -daemon
+
+
+### MULTICHAIN EXPLORER
+cd /multichain-explorer
+cp chain1.example.conf $CHAINNAME.conf
+
+sed -i "s/^port.*/port $EXPLORER_PORT/" $CHAINNAME.conf
+sed -i "s/^host localhost.*/host 0.0.0.0/" $CHAINNAME.conf
+sed -i "s/chain1/$CHAINNAME/" $CHAINNAME.conf
+
+python -m Mce.abe --config $CHAINNAME.conf

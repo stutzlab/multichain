@@ -23,6 +23,10 @@ RUN curl http://www.multichain.com/download/multichain-1.0-alpha-26.tar.gz -o mu
 && cd multichain-1.0 && ls -la \
 && mv multichaind multichain-cli multichain-util /usr/local/bin
 
-COPY runchain.sh /root/runchain.sh
+# download and base setup Multichain Explorer
+RUN git clone https://github.com/MultiChain/multichain-explorer.git \
+&& cd multichain-explorer \
+&& python setup.py install
 
+COPY runchain.sh /root/runchain.sh
 CMD ["/bin/bash", "/root/runchain.sh"]
