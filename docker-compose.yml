@@ -4,9 +4,6 @@ services:
     masternode:
         image: stutzlab/multichain
         build: .
-        container_name: multichain_master
-        stdin_open: true
-        tty: true
         ports:
             - "7000:7000"
             - "8000:8000"
@@ -15,8 +12,5 @@ services:
             CHAINNAME: MyChain
             RPC_USER: multichainrpc
             RPC_PASSWORD: multichain123
-            PARAM_ANYONE_CAN_RECEIVE: anyone-can-receive|false
-            PARAM_ANYONE_CAN_SEND: anyone-can-send|false
-            PARAM_ANYONE_CAN_ISSUE: anyone-can-issue|false
             PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|false
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|false
