@@ -3,27 +3,20 @@ version: '2'
 services:
     masternode:
         image: stutzlab/multichain
-        build: ./multichain
+        build: .
         container_name: multichain_master
         stdin_open: true
         tty: true
         ports:
-            - "7447:7447"
+            - "7000:7000"
             - "8000:8000"
-            - "2777:2777"
-        expose:
-            - 7447
-            - 8000
+            - "9000:9000"
         environment:
-            CHAINNAME: precogs
-            NETWORK_PORT: 7447
-            RPC_PORT: 8000
+            CHAINNAME: MyChain
             RPC_USER: multichainrpc
-            RPC_PASSWORD: multichainrpc
-            RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
-            PARAM_ANYONE_CAN_RECEIVE: anyone-can-receive|true
-            PARAM_ANYONE_CAN_SEND: anyone-can-send|true
-            PARAM_ANYONE_CAN_ISSUE: anyone-can-issue|true
-            PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
-            PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
-            EXPLORER_PORT: 2777
+            RPC_PASSWORD: multichain123
+            PARAM_ANYONE_CAN_RECEIVE: anyone-can-receive|false
+            PARAM_ANYONE_CAN_SEND: anyone-can-send|false
+            PARAM_ANYONE_CAN_ISSUE: anyone-can-issue|false
+            PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|false
+            PARAM_ANYONE_CAN_MINE: anyone-can-mine|false
