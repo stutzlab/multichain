@@ -2,7 +2,7 @@ version: '2'
 
 services:
     masternode:
-        image: stutzlab/multichain
+        image: stutzlab/multichain-genesis
         build: .
         ports:
             - "7000:7000"
