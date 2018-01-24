@@ -73,4 +73,5 @@ echo "Starting Multichain Explorer..."
 python -m Mce.abe --config /root/.multichain/explorer.conf&
 
 echo "Starting Multichain..."
-multichaind $CHAINNAME -txindex -shrinkdebugfilesize
+set -x
+multichaind $CHAINNAME $RUNTIME_PARAMS
